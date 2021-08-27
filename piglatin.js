@@ -16,7 +16,7 @@ fs.readFile(input,'utf8',(err,data) => {
 	console.log('Received File');
 	let splitMessage = data.replace(/(\n\r)|(\r\n)/g, '\n').split(' ');
 	for(let i=0;i<splitMessage.length;i++){
-		let currentWord = splitMessage[i].match(/\w+/g);
+		let currentWord = splitMessage[i].match(/\w+|\d+/g);
 		let newMix = splitMessage[i];
 		if(currentWord === null){
 			newMessage += splitMessage[i] + ' ';
@@ -39,7 +39,7 @@ function convertToPig(word){
 	let uppercase = false;
 	if(word[0] == word[0].toUpperCase()){
 		capital = true;
-		uppercase = true;
+		//uppercase = true;
 	}
 	if(word.length >= 2){
 		if(word[1] == word[1].toUpperCase()){
@@ -69,4 +69,5 @@ function convertToPig(word){
 		}
 		suffix += word[i];
 	}
+	return word;
 }
